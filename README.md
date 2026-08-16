@@ -101,11 +101,117 @@ Custom
 
 برای بررسی پروژه دو روش اصلی وجود دارد.
 
+> **روش دوم (Online Provider) روش پیشنهادی برای ارزیابی پروژه است.** استاد می‌تواند API Key آزمایشی که به‌صورت خصوصی برای ایشان ارسال می‌شود را داخل برنامه وارد کند و بدون نیاز به دانلود مدل Local، بخش اصلی مدیریت Provider، دریافت Modelها، تست اتصال و Chat را بررسی کند.
+
+---
+
+## روش دوم — استفاده از Online Provider با API Key — پیشنهادی
+
+این روش برای ارزیابی سریع‌تر و ساده‌تر پروژه **پیشنهاد می‌شود**.
+
+برای تست بخش Providerهای آنلاین، **یک API Key آزمایشی به‌صورت خصوصی در اختیار استاد قرار داده می‌شود**.
+
+> API Key عمداً داخل GitHub قرار داده نشده است تا اطلاعات محرمانه در Repository عمومی منتشر نشود. استاد فقط کافی است کلید ارسال‌شده را در فیلد `API Key` برنامه وارد کند.
+
+پس از دریافت API Key:
+
+1. Repository را دانلود و Extract کنید.
+2. فایل `START.cmd` را اجرا کنید.
+3. از منوی سمت چپ وارد:
+
+```text
+API Providers
+```
+
+شوید.
+
+4. Provider مربوط به API Key ارسال‌شده را انتخاب کنید.
+
+برای مثال اگر API Key مربوط به Groq باشد:
+
+```text
+Groq
+```
+
+را انتخاب کنید.
+
+5. API Key ارسال‌شده را در فیلد `API Key` وارد کنید.
+6. روی:
+
+```text
+Fetch models
+```
+
+کلیک کنید تا فهرست Modelهایی که این کلید به آن‌ها دسترسی دارد دریافت شود.
+
+7. یکی از Modelهای نمایش‌داده‌شده را انتخاب کنید.
+8. روی:
+
+```text
+Test
+```
+
+کلیک کنید.
+
+9. در صورت موفق بودن Test، Provider آماده استفاده است.
+10. در صورت نیاز روی:
+
+```text
+Set active
+```
+
+کلیک کنید.
+11. وارد بخش `Chat` شوید.
+12. Provider مربوطه را انتخاب کرده و یک پیام آزمایشی ارسال کنید.
+
+اگر پاسخ دریافت شود، ارتباط برنامه با Provider آنلاین با موفقیت برقرار شده است.
+
+### مسیر پیشنهادی برای استاد
+
+```text
+Download ZIP
+    ↓
+Extract
+    ↓
+START.cmd
+    ↓
+API Providers
+    ↓
+Select Provider
+    ↓
+Paste Private API Key
+    ↓
+Fetch models
+    ↓
+Select Model
+    ↓
+Test
+    ↓
+Chat
+```
+
+### مسیر ارتباط Provider آنلاین
+
+```text
+FreeLLM Studio
+      │
+      ▼
+ Provider API
+      │
+      ├── Groq
+      ├── OpenRouter
+      ├── Gemini
+      ├── OpenAI
+      ├── DeepSeek
+      ├── Together
+      └── Custom
+```
+
 ---
 
 ## روش اول — اجرای Local Model بدون API Key
 
-در این حالت هیچ API Key خارجی لازم نیست.
+این روش برای بررسی قابلیت اجرای مدل به‌صورت Local است و به API Key خارجی نیاز ندارد.
 
 پس از اجرای `START.cmd`:
 
@@ -140,7 +246,6 @@ Start model
 کلیک کنید.
 
 5. صبر کنید وضعیت مدل به حالت آماده (`Ready`) برسد.
-
 6. وارد بخش:
 
 ```text
@@ -156,8 +261,7 @@ Qwen2.5-Coder-0.5B-Instruct
 GGUF / Q4_K_M
 ```
 
-Runtime و Model داخل Repository قرار داده نشده‌اند تا مخزن GitHub سبک باقی بماند.  
-این فایل‌ها هنگام نیاز دانلود شده و در Windows داخل مسیر زیر نگهداری می‌شوند:
+Runtime و Model داخل Repository قرار داده نشده‌اند تا مخزن GitHub سبک باقی بماند. این فایل‌ها هنگام نیاز دانلود شده و در Windows داخل مسیر زیر نگهداری می‌شوند:
 
 ```text
 %LOCALAPPDATA%\FreeLLMStudio\
@@ -173,83 +277,6 @@ FreeLLM Studio
       │
       ▼
  GGUF Model
-```
-
----
-
-## روش دوم — استفاده از Online Provider با API Key
-
-برای تست بخش Providerهای آنلاین، **API Key آزمایشی به‌صورت خصوصی در اختیار استاد قرار داده می‌شود**.
-
-> API Key عمداً داخل GitHub قرار داده نشده است تا اطلاعات محرمانه در Repository عمومی منتشر نشود.
-
-پس از دریافت API Key:
-
-1. برنامه را با `START.cmd` اجرا کنید.
-2. از منوی سمت چپ وارد:
-
-```text
-API Providers
-```
-
-شوید.
-
-3. Provider مربوط به API Key ارسال‌شده را انتخاب کنید.
-
-برای مثال اگر API Key مربوط به Groq باشد:
-
-```text
-Groq
-```
-
-را انتخاب کنید.
-
-4. API Key را در فیلد مربوطه وارد کنید.
-5. روی:
-
-```text
-Fetch models
-```
-
-کلیک کنید.
-
-6. یکی از Modelهای دریافت‌شده را انتخاب کنید.
-7. روی:
-
-```text
-Test
-```
-
-کلیک کنید.
-
-8. اگر Test موفق باشد، Provider آماده استفاده است.
-9. در صورت نیاز روی:
-
-```text
-Set active
-```
-
-کلیک کنید.
-10. وارد بخش `Chat` شوید و Provider مربوطه را انتخاب کنید.
-11. یک پیام آزمایشی ارسال کنید.
-
-اگر پاسخ دریافت شود، ارتباط با Provider آنلاین با موفقیت برقرار شده است.
-
-### مسیر ارتباط Provider آنلاین
-
-```text
-FreeLLM Studio
-      │
-      ▼
- Provider API
-      │
-      ├── Groq
-      ├── OpenRouter
-      ├── Gemini
-      ├── OpenAI
-      ├── DeepSeek
-      ├── Together
-      └── Custom
 ```
 
 ---
@@ -489,16 +516,16 @@ START.cmd
 FreeLLM Studio
 ```
 
-سپس استاد می‌تواند یکی از این دو مسیر را بررسی کند:
+برای ارزیابی، **روش دوم (Online Provider) پیشنهاد می‌شود**. استاد می‌تواند API Key آزمایشی ارسال‌شده به‌صورت خصوصی را در برنامه وارد کند و مسیر زیر را بررسی کند:
+
+```text
+API Providers → Select Provider → Paste Private API Key → Fetch models → Select Model → Test → Chat
+```
+
+در صورت تمایل، روش Local نیز بدون API Key قابل بررسی است:
 
 ```text
 Local Models → Install runtime → Download Lite model → Start model → Chat
-```
-
-یا با API Key خصوصی:
-
-```text
-API Providers → Select Provider → API Key → Fetch models → Test → Chat
 ```
 
 ---
