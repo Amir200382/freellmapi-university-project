@@ -533,7 +533,7 @@ Logs containing secrets
 
 لینک ویدیوی ارائه قبلی:
 
-[▶️ مشاهده ویدیوی پروژه](https://drive.google.com/file/d/1yDVhFRk7pRmxaFJIKEIIzoiOmvJRG-IQ/preview)
+[▶️ مشاهده ویدیوی پروژه](https://drive.google.com/file/d/1Y9HDNortzUwbdmr7iMq7t_huw_5rriuR/view?usp=sharing)
 
 ---
 
