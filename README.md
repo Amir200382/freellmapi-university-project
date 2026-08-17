@@ -2,18 +2,19 @@
 
 > **Python Desktop Manager for FreeLLMAPI, Local LLMs, Cloud API Providers & Cline**
 
-این مخزن نسخه نهایی پروژه دانشگاهی **FreeLLMAPI** است.  
+این مخزن نسخه نهایی پروژه دانشگاهی **FreeLLMAPI** است.
+
 پروژه در دو بخش انجام شده است:
 
-1. **بررسی و راه‌اندازی FreeLLMAPI**، مدیریت Providerها، Fallback و اتصال به `Cline` در `VS Code`.
-2. **طراحی و توسعه FreeLLM Studio با Python/PySide6** برای اجرای مدل Local، مدیریت Providerهای آنلاین، تست APIها، Chat، Bridge سازگار با OpenAI و اتصال ساده‌تر به FreeLLMAPI.
+1. **بررسی و راه‌اندازی FreeLLMAPI**، مدیریت ارائه‌دهنده‌ها (`Provider`)، مسیر جایگزین (`Fallback`) و اتصال به `Cline` در `Visual Studio Code`.
+2. **طراحی و توسعه FreeLLM Studio با Python/PySide6** برای اجرای مدل محلی (`Local Model`)، مدیریت ارائه‌دهنده‌های آنلاین (`Online Provider`)، تست APIها، گفت‌وگوی داخلی (`Chat`)، پل سازگار با OpenAI (`OpenAI-Compatible Bridge`) و اتصال ساده‌تر به FreeLLMAPI.
 
 > بخش دوم، یعنی **FreeLLM Studio**، توسعه اختصاصی این Repository است و سورس اجرایی آن در فایل `app.py` قرار دارد.
 
 **درس:** پروژه نرم‌افزار  
 **دانشگاه:** دانشگاه آزاد اسلامی واحد تهران مرکزی  
 **ترم:** تابستان 4043  
-**نسخه نرم‌افزار:** 1.2.1
+**نسخه نرم‌افزار:** `1.2.1`
 
 ---
 
@@ -33,7 +34,7 @@ Code → Download ZIP
 
 پس از دانلود:
 
-1. فایل ZIP را `Extract` کنید.
+1. فایل ZIP را Extract کنید.
 2. وارد پوشه استخراج‌شده شوید.
 3. فایل زیر را اجرا کنید:
 
@@ -41,8 +42,8 @@ Code → Download ZIP
 START.cmd
 ```
 
-4. در اجرای اول، برنامه به‌صورت خودکار:
-   - یک Virtual Environment مستقل با نام `.venv` می‌سازد.
+4. در اولین اجرا، برنامه به‌صورت خودکار:
+   - یک محیط مجازی مستقل (`.venv`) می‌سازد.
    - وابستگی‌های Python را از `requirements.txt` نصب می‌کند.
    - برنامه اصلی را اجرا می‌کند.
 5. در اجراهای بعدی، برنامه مستقیماً باز می‌شود.
@@ -61,28 +62,28 @@ Add Python to PATH
 
 # بخش اصلی پروژه — FreeLLM Studio
 
-`FreeLLM Studio` یک نرم‌افزار Desktop است که با **Python و PySide6** توسعه داده شده و هدف آن یکپارچه‌سازی اجرای مدل Local و استفاده از API Providerهای مختلف در یک رابط واحد است.
+`FreeLLM Studio` یک نرم‌افزار Desktop است که با **Python و PySide6** توسعه داده شده و هدف آن یکپارچه‌سازی اجرای مدل محلی و استفاده از API ارائه‌دهنده‌های مختلف در یک رابط واحد است.
 
 ### امکانات اصلی
 
 - رابط گرافیکی Desktop با `PySide6`
-- اجرای مدل Local با `llama.cpp`
+- اجرای مدل محلی با `llama.cpp`
 - پشتیبانی از مدل‌های `GGUF`
 - دانلود Runtime فقط در صورت نیاز
 - دانلود مدل Lite فقط در صورت نیاز
-- Chat داخلی
-- مدیریت API Providerهای مختلف
-- دریافت خودکار لیست Modelها
-- تست واقعی اتصال Provider
-- انتخاب Provider فعال
-- OpenAI-Compatible Bridge
-- اتصال به FreeLLMAPI و Cline
-- Diagnostics و Log
-- تنظیمات Network / Proxy / VPN
+- گفت‌وگوی داخلی (`Chat`)
+- مدیریت ارائه‌دهنده‌های API (`API Provider`)
+- دریافت فهرست مدل‌های در دسترس
+- تست واقعی اتصال ارائه‌دهنده
+- انتخاب ارائه‌دهنده فعال
+- پل سازگار با OpenAI (`OpenAI-Compatible Bridge`)
+- اتصال به FreeLLMAPI و `Cline`
+- بخش عیب‌یابی و گزارش (`Diagnostics / Log`)
+- تنظیمات شبکه، Proxy و VPN
 - عدم ذخیره API Key داخل GitHub
-- عدم نیاز به Docker برای اجرای خود FreeLLM Studio و مدل Local
+- عدم نیاز به Docker برای اجرای خود FreeLLM Studio و مدل محلی
 
-Providerهای موجود در نسخه فعلی:
+ارائه‌دهنده‌های موجود در نسخه فعلی:
 
 ```text
 Local Model
@@ -101,70 +102,63 @@ Custom
 
 برای بررسی پروژه دو روش اصلی وجود دارد.
 
-> **روش دوم (Online Provider) روش پیشنهادی برای ارزیابی پروژه است.** استاد می‌تواند API Key آزمایشی که به‌صورت خصوصی برای ایشان ارسال می‌شود را داخل برنامه وارد کند و بدون نیاز به دانلود مدل Local، بخش اصلی مدیریت Provider، دریافت Modelها، تست اتصال و Chat را بررسی کند.
+> **روش دوم، یعنی استفاده از ارائه‌دهنده آنلاین (`Online Provider`)، روش پیشنهادی برای ارزیابی پروژه است.**
+>
+> استاد می‌تواند API Key آزمایشی که به‌صورت خصوصی برای ایشان ارسال می‌شود را داخل برنامه وارد کند و بدون نیاز به دانلود مدل محلی، بخش‌های اصلی نرم‌افزار شامل مدیریت ارائه‌دهنده، انتخاب مدل، تست اتصال و گفت‌وگو را بررسی کند.
 
 ---
 
-## روش دوم — استفاده از Online Provider با API Key — پیشنهادی
+## روش دوم — استفاده از ارائه‌دهنده آنلاین (`Online Provider`) با API Key — پیشنهادی
 
 این روش برای ارزیابی سریع‌تر و ساده‌تر پروژه **پیشنهاد می‌شود**.
 
-برای تست بخش Providerهای آنلاین، **یک API Key آزمایشی به‌صورت خصوصی در اختیار استاد قرار داده می‌شود**.
+برای تست بخش ارائه‌دهنده‌های آنلاین، **یک API Key آزمایشی به‌صورت خصوصی در اختیار استاد قرار داده می‌شود**.
 
 > API Key عمداً داخل GitHub قرار داده نشده است تا اطلاعات محرمانه در Repository عمومی منتشر نشود. استاد فقط کافی است کلید ارسال‌شده را در فیلد `API Key` برنامه وارد کند.
 
-پس از دریافت API Key:
+### مراحل اجرا
 
 1. Repository را دانلود و Extract کنید.
 2. فایل `START.cmd` را اجرا کنید.
-3. از منوی سمت چپ وارد:
+3. از منوی سمت چپ وارد بخش زیر شوید:
 
 ```text
 API Providers
 ```
 
-شوید.
+4. ارائه‌دهنده (`Provider`) مربوط به API Key ارسال‌شده را انتخاب کنید.
 
-4. Provider مربوط به API Key ارسال‌شده را انتخاب کنید.
-
-برای مثال اگر API Key مربوط به Groq باشد:
+برای مثال، اگر API Key مربوط به Groq باشد، گزینه زیر را انتخاب کنید:
 
 ```text
 Groq
 ```
 
-را انتخاب کنید.
-
 5. API Key ارسال‌شده را در فیلد `API Key` وارد کنید.
-6. روی:
+6. روی گزینه زیر کلیک کنید:
 
 ```text
 Fetch models
 ```
 
-کلیک کنید تا فهرست Modelهایی که این کلید به آن‌ها دسترسی دارد دریافت شود.
-
-7. یکی از Modelهای نمایش‌داده‌شده را انتخاب کنید.
-8. روی:
+7. یکی از مدل‌های نمایش‌داده‌شده را انتخاب کنید.
+8. روی گزینه زیر کلیک کنید:
 
 ```text
 Test
 ```
 
-کلیک کنید.
-
-9. در صورت موفق بودن Test، Provider آماده استفاده است.
-10. در صورت نیاز روی:
+9. در صورت موفق بودن تست، ارائه‌دهنده آماده استفاده است.
+10. در صورت نیاز، روی گزینه زیر کلیک کنید:
 
 ```text
 Set active
 ```
 
-کلیک کنید.
 11. وارد بخش `Chat` شوید.
-12. Provider مربوطه را انتخاب کرده و یک پیام آزمایشی ارسال کنید.
+12. ارائه‌دهنده مربوطه را انتخاب کرده و یک پیام آزمایشی ارسال کنید.
 
-اگر پاسخ دریافت شود، ارتباط برنامه با Provider آنلاین با موفقیت برقرار شده است.
+اگر پاسخ دریافت شود، ارتباط برنامه با ارائه‌دهنده آنلاین با موفقیت برقرار شده است.
 
 ### مسیر پیشنهادی برای استاد
 
@@ -190,7 +184,7 @@ Test
 Chat
 ```
 
-### مسیر ارتباط Provider آنلاین
+### مسیر ارتباط با ارائه‌دهنده آنلاین
 
 ```text
 FreeLLM Studio
@@ -209,50 +203,38 @@ FreeLLM Studio
 
 ---
 
-## روش اول — اجرای Local Model بدون API Key
+## روش اول — اجرای مدل محلی (`Local Model`) بدون API Key
 
-این روش برای بررسی قابلیت اجرای مدل به‌صورت Local است و به API Key خارجی نیاز ندارد.
+این روش برای بررسی قابلیت اجرای مدل به‌صورت محلی است و به API Key خارجی نیاز ندارد.
 
 پس از اجرای `START.cmd`:
 
-1. از منوی سمت چپ وارد:
+1. از منوی سمت چپ وارد بخش زیر شوید:
 
 ```text
 Local Models
 ```
 
-2. روی:
+2. روی گزینه زیر کلیک کنید:
 
 ```text
 Install runtime
 ```
 
-کلیک کنید.
-
-3. پس از نصب Runtime، روی:
+3. پس از نصب Runtime، روی گزینه زیر کلیک کنید:
 
 ```text
 Download Lite model
 ```
 
-کلیک کنید.
-
-4. پس از دانلود مدل، روی:
+4. پس از دانلود مدل، روی گزینه زیر کلیک کنید:
 
 ```text
 Start model
 ```
 
-کلیک کنید.
-
 5. صبر کنید وضعیت مدل به حالت آماده (`Ready`) برسد.
-6. وارد بخش:
-
-```text
-Chat
-```
-
-شوید و یک پیام آزمایشی ارسال کنید.
+6. وارد بخش `Chat` شوید و یک پیام آزمایشی ارسال کنید.
 
 ### مدل پیش‌فرض Lite
 
@@ -261,13 +243,15 @@ Qwen2.5-Coder-0.5B-Instruct
 GGUF / Q4_K_M
 ```
 
-Runtime و Model داخل Repository قرار داده نشده‌اند تا مخزن GitHub سبک باقی بماند. این فایل‌ها هنگام نیاز دانلود شده و در Windows داخل مسیر زیر نگهداری می‌شوند:
+Runtime و Model داخل Repository قرار داده نشده‌اند تا مخزن GitHub سبک باقی بماند.
+
+این فایل‌ها هنگام نیاز دانلود شده و در Windows داخل مسیر زیر نگهداری می‌شوند:
 
 ```text
 %LOCALAPPDATA%\FreeLLMStudio\
 ```
 
-### مسیر ارتباط Local
+### مسیر ارتباط مدل محلی
 
 ```text
 FreeLLM Studio
@@ -281,77 +265,63 @@ FreeLLM Studio
 
 ---
 
-# تفاوت Local و Online Provider
+# تفاوت مدل محلی و ارائه‌دهنده آنلاین
 
-| ویژگی | Local Model | Online Provider |
+| ویژگی | مدل محلی (`Local Model`) | ارائه‌دهنده آنلاین (`Online Provider`) |
 |---|---|---|
 | نیاز به API Key | خیر | بله |
 | محل اجرای مدل | سیستم کاربر | سرور Provider |
 | نیاز به اینترنت بعد از دانلود مدل | خیر | بله |
 | نیاز به Runtime | بله | خیر |
 | مدل GGUF | بله | خیر |
-| Fetch Models | خیر | بله |
-| Test Connection | Local health/inference | API واقعی Provider |
+| دریافت فهرست مدل‌ها | خیر | بله |
+| تست اتصال | سلامت و Inference محلی | API واقعی Provider |
 
 ---
 
-# OpenAI-Compatible Bridge
+# پل سازگار با OpenAI (`OpenAI-Compatible Bridge`)
 
 FreeLLM Studio یک Bridge محلی سازگار با OpenAI ارائه می‌دهد.
 
-پیش‌فرض:
+آدرس پیش‌فرض:
 
 ```text
-Base URL:
 http://127.0.0.1:8899/v1
 ```
 
-Bridge درخواست‌ها را به Provider فعال داخل برنامه هدایت می‌کند.
+این Bridge درخواست‌ها را به ارائه‌دهنده فعال داخل برنامه هدایت می‌کند.
 
-معماری کلی:
-
-```mermaid
-flowchart LR
-    C[Cline] --> F[FreeLLMAPI]
-    F --> B[FreeLLM Studio Bridge<br/>127.0.0.1:8899/v1]
-    B --> L[Local llama.cpp / GGUF]
-    B --> P[Cloud Providers]
-    P --> G[Groq / OpenRouter / Gemini]
-    P --> O[OpenAI / DeepSeek / Together]
-    P --> X[Custom OpenAI-Compatible]
-```
-
-مزیت این معماری این است که Provider و Model فعال از داخل **FreeLLM Studio** قابل تغییر است و لایه‌های دیگر نیازی به تنظیم مجدد مداوم ندارند.
+مزیت این معماری این است که ارائه‌دهنده و مدل فعال از داخل **FreeLLM Studio** قابل تغییر است و لایه‌های دیگر نیازی به تنظیم مجدد مداوم ندارند.
 
 ---
 
 # اتصال FreeLLM Studio به FreeLLMAPI
 
-در FreeLLMAPI می‌توان یک Provider از نوع **Custom OpenAI-Compatible** تعریف کرد.
+در FreeLLMAPI می‌توان یک ارائه‌دهنده از نوع زیر تعریف کرد:
 
-اطلاعات Bridge در صفحه:
+```text
+Custom OpenAI-Compatible
+```
+
+اطلاعات Bridge در صفحه زیر داخل FreeLLM Studio نمایش داده می‌شود:
 
 ```text
 Gateway / Cline
 ```
 
-داخل FreeLLM Studio نمایش داده می‌شود.
-
-به‌صورت پیش‌فرض Base URL:
+آدرس پیش‌فرض Base URL:
 
 ```text
 http://127.0.0.1:8899/v1
 ```
 
-است.
-
-پس از یک‌بار تنظیم FreeLLMAPI، تغییر Provider یا Model از داخل FreeLLM Studio قابل انجام است.
+پس از یک‌بار تنظیم FreeLLMAPI، تغییر ارائه‌دهنده یا مدل از داخل FreeLLM Studio قابل انجام است.
 
 ---
 
 # اتصال به Cline
 
-در بخش اول پروژه، `Cline` در `Visual Studio Code` به Unified API مربوط به FreeLLMAPI متصل می‌شود.
+در بخش اول پروژه، `Cline` در `Visual Studio Code` به API یکپارچه FreeLLMAPI متصل می‌شود.
 
 ساختار کلی:
 
@@ -368,7 +338,7 @@ FreeLLM Studio Bridge
   └── Online Provider
 ```
 
-در Cline نوع Provider باید روی حالت سازگار با OpenAI قرار بگیرد:
+در تنظیمات Cline، نوع ارائه‌دهنده باید روی حالت سازگار با OpenAI قرار بگیرد:
 
 ```text
 OpenAI Compatible
@@ -376,23 +346,21 @@ OpenAI Compatible
 
 ---
 
-# تست سریع سورس بدون دانلود Model و بدون API Key
+# تست سریع سورس بدون دانلود مدل و بدون API Key
 
-اگر هدف فقط بررسی اجرای سورس و هسته برنامه باشد:
+اگر هدف فقط بررسی اجرای سورس و هسته برنامه باشد، فایل زیر را اجرا کنید:
 
 ```text
 TEST.cmd
 ```
 
-را اجرا کنید.
+یا از CMD / PowerShell:
 
-یا از CMD/PowerShell:
-
-```bash
+```text
 python app.py --self-test
 ```
 
-Self-test برای بررسی سریع بخش‌های اصلی هسته و Bridge طراحی شده و برای اجرای آن به API Key یا دانلود Model خارجی نیاز نیست.
+Self-test برای بررسی سریع بخش‌های اصلی هسته و Bridge طراحی شده و برای اجرای آن به API Key یا دانلود مدل خارجی نیاز نیست.
 
 ---
 
@@ -454,17 +422,17 @@ Logs containing secrets
 موارد بررسی‌شده:
 
 - نصب و راه‌اندازی FreeLLMAPI
-- مدیریت Providerها
-- دریافت API Key از Providerهای مختلف
-- بررسی Modelها
-- Fallback بین Modelها
-- Playground
-- Unified API
-- اتصال به Cline
-- استفاده از OpenAI-Compatible API
-- بررسی اجرای Local و Cloud
+- مدیریت ارائه‌دهنده‌ها (`Provider`)
+- دریافت API Key از ارائه‌دهنده‌های مختلف
+- بررسی مدل‌ها
+- مسیر جایگزین بین مدل‌ها (`Fallback`)
+- بخش آزمایش (`Playground`)
+- API یکپارچه (`Unified API`)
+- اتصال به `Cline`
+- استفاده از API سازگار با OpenAI
+- بررسی اجرای مدل‌های محلی و سرویس‌های ابری
 
-این مرحله مبنای طراحی بخش دوم پروژه یعنی **FreeLLM Studio** شد.
+این مرحله مبنای طراحی بخش دوم پروژه، یعنی **FreeLLM Studio**، شد.
 
 ---
 
@@ -480,10 +448,10 @@ Logs containing secrets
 2. ساده‌تر کردن اجرای پروژه
 3. کاهش مراحل نصب پراکنده
 4. اجرای Local LLM بدون Docker
-5. مدیریت Providerها از یک UI واحد
-6. تست APIها و Modelها
+5. مدیریت ارائه‌دهنده‌ها از یک رابط واحد
+6. تست APIها و مدل‌ها
 7. ایجاد Bridge سازگار با OpenAI
-8. امکان اتصال به FreeLLMAPI و Cline
+8. امکان اتصال به FreeLLMAPI و `Cline`
 9. امکان اجرای پروژه توسط استاد تنها با `START.cmd`
 
 ---
@@ -516,7 +484,9 @@ START.cmd
 FreeLLM Studio
 ```
 
-برای ارزیابی، **روش دوم (Online Provider) پیشنهاد می‌شود**. استاد می‌تواند API Key آزمایشی ارسال‌شده به‌صورت خصوصی را در برنامه وارد کند و مسیر زیر را بررسی کند:
+برای ارزیابی، **روش دوم یعنی استفاده از ارائه‌دهنده آنلاین (`Online Provider`) پیشنهاد می‌شود**.
+
+استاد می‌تواند API Key آزمایشی ارسال‌شده به‌صورت خصوصی را در برنامه وارد کند و مسیر زیر را بررسی کند:
 
 ```text
 API Providers → Select Provider → Paste Private API Key → Fetch models → Select Model → Test → Chat
@@ -534,9 +504,9 @@ Local Models → Install runtime → Download Lite model → Start model → Cha
 
 برای جزئیات فنی:
 
-- [`docs/ARCHITECTURE.md`](docs/ARCHITECTURE.md)
-- [`docs/PROJECT_CONTEXT.md`](docs/PROJECT_CONTEXT.md)
-- [`docs/CHANGELOG.md`](docs/CHANGELOG.md)
+- [`docs/ARCHITECTURE.md`](https://github.com/Amir200382/freellmapi-university-project/blob/main/docs/ARCHITECTURE.md)
+- [`docs/PROJECT_CONTEXT.md`](https://github.com/Amir200382/freellmapi-university-project/blob/main/docs/PROJECT_CONTEXT.md)
+- [`docs/CHANGELOG.md`](https://github.com/Amir200382/freellmapi-university-project/blob/main/docs/CHANGELOG.md)
 
 ---
 
