@@ -531,7 +531,7 @@ Logs containing secrets
 
 ویدیوی اجرای پروژه شامل مراحل FreeLLMAPI، Cline و بخش Python تهیه شده است.
 
-لینک ویدیوی ارائه قبلی:
+لینک مشاهده ویدیوی اجرای پروژه:
 
 [▶️ مشاهده ویدیوی پروژه](https://drive.google.com/file/d/1Y9HDNortzUwbdmr7iMq7t_huw_5rriuR/view?usp=sharing)
 
